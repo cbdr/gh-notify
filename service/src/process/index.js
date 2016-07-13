@@ -32,6 +32,11 @@ function mapPRs(repo) {
 }
 
 function getLevel(PR) {
+  PR.comments = _.filter(PR.comments, (comment) => {
+    if(comment.user.login !== pr.owner) {
+      return true;
+    }
+  });
   let noComments = PR.comments.length === 0;
   if(PR.assignees.length === 0 || PR.timeOpen > 3) {
     return 10; //red: no assignees or stale
