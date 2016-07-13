@@ -24,6 +24,10 @@ export default function notifyHipchat(pullRequests) {
     '5': '',
     '10': ''
   }
+  let githubUserMap = {
+    'mmoldavan': '@MattMoldavan',
+    'derrickwilliams': '@DerrickW'
+  }
 
   pullRequests = pullRequests || [{
       link: 'https://github.com/cbdr/cbax-apply-platform/pull/271',
@@ -38,12 +42,14 @@ export default function notifyHipchat(pullRequests) {
 
   function groupPRs(pr) {
     groupedPRs[pr.level].push(pr);
-    messages[pr.level] += '<b>' +pr.repo +': <a href="'+ pr.link +'">' + pr.title + '</a></b></br><i>Assignees: '+pr.assignees+'</i><br/>'
+    messages[pr.level] += '<b>' +pr.repo +': <a href="'+ pr.link +'">' + pr.title + '</a></b></br><i>Assignees: '+ pr.assignees +'</i><br/>'
   }
 
   function sendNotifcation(message, key) {
     if(groupedPRs[key].length > 0) {
-      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/><br/>' + message
+      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/>' +
+        '<br/>' + message + '<br/>' +
+        '<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/disappear-1417754650@2x.gif" />';
       hipchatter.notify('CBAX Scrum', 
           {
               message: message,
@@ -53,6 +59,16 @@ export default function notifyHipchat(pullRequests) {
           }, function(err){
               if (err == null) console.log('Successfully notified the room.');
       });
+    }
+  }
+
+  function getHipchatMentions(assignees) {
+    let mentions = '';
+    forEach(assignees, getHipChatUser)
+    return mentions;
+
+    function getHipChatUser(githubUsername) {
+      mentions += githubUserMap[githubUsername] || githubUsername;
     }
   }
 
