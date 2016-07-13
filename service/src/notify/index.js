@@ -3,8 +3,6 @@ import Promise from 'bluebird';
 import { forEach } from 'lodash';
 
 export default function notifyHipchat(pullRequests) {
-  console.log('pullRequests:',pullRequests);
-
   let hipchatter = new Hipchatter('X7qQU0XPSjNn86rj6eLcZEX4tQ1rm6hojP7tLFuq');
   let colors = {
     '0': 'green',
@@ -44,7 +42,6 @@ export default function notifyHipchat(pullRequests) {
   }
 
   function sendNotifcation(message, key) {
-    console.log(key, message);
     if(groupedPRs[key].length > 0) {
       message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/><br/>' + message
       hipchatter.notify('CBAX Scrum', 
