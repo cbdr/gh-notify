@@ -32,7 +32,7 @@ function loadPullRequests(repo) {
       owner: p.user,
       number: p.number,
       title: p.title,
-      url: p.url,
+      url: p.html_url,
       assignees: p.assignees,
       created: p.created_at,
       updated: p.updated_at,
@@ -68,7 +68,7 @@ function removePlaceholder(url, placeholder) {
 
 function githubRequest(endpoint, { data = {}, dataField = 'qs' } = {}) {
   return Promise.resolve(request({
-    url: prepEndpointUrl(endpoint),
+    url: prepEndpointUrl(endpoint) + '?per_page=100',
     [dataField]: data,
     headers: {
       'Authorization': `token ${process.env.GH_NOTIFY_AUTH_TOKEN}`,
