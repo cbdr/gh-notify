@@ -33,7 +33,7 @@ function mapPRs(repo) {
 
 function getLevel(PR) {
   PR.comments = _.filter(PR.comments, (comment) => {
-    if(comment.user.login !== pr.owner) {
+    if(comment.user.login !== PR.owner) {
       return true;
     }
   });
