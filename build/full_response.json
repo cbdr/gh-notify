@@ -703,9 +703,29 @@
         "number": 272,
         "title": "github notify test pr",
         "url": "https://github.com/cbdr/cbax-apply-platform/pull/272",
-        "assignees": [],
+        "assignees": [
+          {
+            "login": "mmoldavan",
+            "id": 1375955,
+            "avatar_url": "https://avatars.githubusercontent.com/u/1375955?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/mmoldavan",
+            "html_url": "https://github.com/mmoldavan",
+            "followers_url": "https://api.github.com/users/mmoldavan/followers",
+            "following_url": "https://api.github.com/users/mmoldavan/following{/other_user}",
+            "gists_url": "https://api.github.com/users/mmoldavan/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/mmoldavan/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/mmoldavan/subscriptions",
+            "organizations_url": "https://api.github.com/users/mmoldavan/orgs",
+            "repos_url": "https://api.github.com/users/mmoldavan/repos",
+            "events_url": "https://api.github.com/users/mmoldavan/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/mmoldavan/received_events",
+            "type": "User",
+            "site_admin": false
+          }
+        ],
         "created": "2016-07-13T20:10:47Z",
-        "updated": "2016-07-13T20:10:47Z",
+        "updated": "2016-07-13T20:22:30Z",
         "comments": []
       },
       {
@@ -968,64 +988,6 @@
             "body": "Do we know if the intel team changed their api yet? They were talking about making their api response conform to actual standards."
           }
         ]
-      },
-      {
-        "id": 69700046,
-        "owner": {
-          "login": "wvargascb",
-          "id": 8550010,
-          "avatar_url": "https://avatars.githubusercontent.com/u/8550010?v=3",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/wvargascb",
-          "html_url": "https://github.com/wvargascb",
-          "followers_url": "https://api.github.com/users/wvargascb/followers",
-          "following_url": "https://api.github.com/users/wvargascb/following{/other_user}",
-          "gists_url": "https://api.github.com/users/wvargascb/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/wvargascb/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/wvargascb/subscriptions",
-          "organizations_url": "https://api.github.com/users/wvargascb/orgs",
-          "repos_url": "https://api.github.com/users/wvargascb/repos",
-          "events_url": "https://api.github.com/users/wvargascb/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/wvargascb/received_events",
-          "type": "User",
-          "site_admin": false
-        },
-        "number": 249,
-        "title": "Logo update",
-        "url": "https://github.com/cbdr/cbax-apply-platform/pull/249",
-        "assignees": [],
-        "created": "2016-05-11T16:14:13Z",
-        "updated": "2016-06-16T19:51:09Z",
-        "comments": []
-      },
-      {
-        "id": 69422157,
-        "owner": {
-          "login": "wvargascb",
-          "id": 8550010,
-          "avatar_url": "https://avatars.githubusercontent.com/u/8550010?v=3",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/wvargascb",
-          "html_url": "https://github.com/wvargascb",
-          "followers_url": "https://api.github.com/users/wvargascb/followers",
-          "following_url": "https://api.github.com/users/wvargascb/following{/other_user}",
-          "gists_url": "https://api.github.com/users/wvargascb/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/wvargascb/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/wvargascb/subscriptions",
-          "organizations_url": "https://api.github.com/users/wvargascb/orgs",
-          "repos_url": "https://api.github.com/users/wvargascb/repos",
-          "events_url": "https://api.github.com/users/wvargascb/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/wvargascb/received_events",
-          "type": "User",
-          "site_admin": false
-        },
-        "number": 247,
-        "title": "logo update",
-        "url": "https://github.com/cbdr/cbax-apply-platform/pull/247",
-        "assignees": [],
-        "created": "2016-05-09T22:34:04Z",
-        "updated": "2016-06-16T19:51:09Z",
-        "comments": []
       },
       {
         "id": 59696821,
