@@ -40,7 +40,7 @@ cd $DIST_DIR
 zip -r -q ${DIST_FILE} ./index.js ./**/**
 
 echo "POSTCLEANUP"
-rm -rf ${DIST_DIR}/*
+# rm -rf ${DIST_DIR}/*
 # find $DIST_DIR -not -name $DIST_FILE_NAME -print0 | xargs -0 rm -rf --
 
 echo "DISTRIBUTION AT ${DIST_FILE}"

@@ -4,6 +4,7 @@ import { assign, filter, includes } from 'lodash';
 const GITHUB_API_URL = 'https://api.github.com';
 
 export default function getRepositories({ repo }) {
+  debugger
   return githubRequest('search/repositories', {
     data: {
       q: `${repo} in:name pushed:>=2016-01-01`

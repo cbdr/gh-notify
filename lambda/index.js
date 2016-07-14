@@ -9,7 +9,8 @@ const Promise = require('bluebird');
 const dotenv = require('dotenv');
 const join = require('path').join;
 const _ = require('lodash');
-const ghRetrieve = require('./build/retrieve').default;
+const processPRs = require('./build/process').default;
+const notifyHipchat = require('./build/notify').default;
 
 exports.handler = function(event, context, cb) {
   const s3 = new aws.S3();
@@ -17,8 +18,8 @@ exports.handler = function(event, context, cb) {
   const envFile = { Bucket: 'cb1-artifacts', Key: 'ApplyExperience/lambda/gh_notify.env'}
 
   return loadEnv()
-    .then(() => ghRetrieve({ repo: 'cbax-' }))
-    .tap(repos => console.log('REPO COUNT', repos.length))
+    .then(processPRs)
+    .then(notifyHipchat)
     .tap(repos => cb(null, repos))
     .error(cb);
 
