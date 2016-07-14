@@ -1,6 +1,6 @@
 {
   "name": "gh-notify",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Keeping coders honest.",
   "main": "build/app/index.js",
   "scripts": {
