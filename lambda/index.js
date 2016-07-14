@@ -1,0 +1,31 @@
+'use strict';
+
+// THIS FILE IS ACTUALLY RUN FROM A DIFFERENT PATH
+// WHEN RUN IT WILL BE ADJACENT TO THE BUILD DIR
+
+const writeFile = require('fs').writeFileSync;
+const aws = require('aws-sdk');
+const Promise = require('bluebird');
+const dotenv = require('dotenv');
+const join = require('path').join;
+const _ = require('lodash');
+const ghRetrieve = require('./build/retrieve').default;
+
+exports.handler = function(event, context, cb) {
+  const s3 = new aws.S3();
+  const prms = (promiseIn) => Promise.resolve(promiseIn);
+  const envFile = { Bucket: 'cb1-artifacts', Key: 'ApplyExperience/lambda/gh_notify.env'}
+
+  return loadEnv()
+    .then(() => ghRetrieve({ repo: 'cbax-' }))
+    .tap(repos => console.log('REPO COUNT', repos.length))
+    .tap(repos => cb(null, repos))
+    .error(cb);
+
+  function loadEnv() {
+    return prms(s3.getObject(envFile).promise())
+    .then(o => o.Body.toString())
+    .then(file => dotenv.parse(file))
+    .tap(vars => _.assign(process.env, vars))
+  }
+};

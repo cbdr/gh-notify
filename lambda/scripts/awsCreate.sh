@@ -9,7 +9,7 @@ aws lambda create-function \
     --function-name "$1" \
     --runtime nodejs4.3 \
     --role "$2" \
-    --handler lambda.handler \
+    --handler index.handler \
     --description "CBAX GH Data Notifier" \
     --timeout 3 \
     --memory-size 128 \
