@@ -41,7 +41,6 @@ export default function notifyHipchat(pullRequests) {
   forEach(messages, sendNotifcation);
 
   function groupPRs(pr) {
-    debugger
     groupedPRs[pr.level].push(pr);
     messages[pr.level] += '<b>' +pr.repo +': <a href="'+ pr.link +'">' + pr.title + '</a></b></br><i>Assignees: '+ pr.assignees +'</i><br/>'
   }
