@@ -7,7 +7,7 @@ export default function notifyHipchat(pullRequests) {
   let colors = {
     '0': 'green',
     '5': 'yellow',
-    '10': 'red'  
+    '10': 'red'
   };
   let levels = {
     '0': 'new',
@@ -41,16 +41,22 @@ export default function notifyHipchat(pullRequests) {
   forEach(messages, sendNotifcation);
 
   function groupPRs(pr) {
+    debugger
     groupedPRs[pr.level].push(pr);
     messages[pr.level] += '<b>' +pr.repo +': <a href="'+ pr.link +'">' + pr.title + '</a></b></br><i>Assignees: '+ pr.assignees +'</i><br/>'
   }
 
   function sendNotifcation(message, key) {
     if(groupedPRs[key].length > 0) {
-      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/>' +
-        '<br/>' + message + '<br/>' +
-        '<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/disappear-1417754650@2x.gif" />';
-      hipchatter.notify('CBAX Scrum', 
+// <<<<<<< a8e928d95ca38dddf1cbe41ce25e2a984cb6653e
+//       message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/>' +
+//         '<br/>' + message + '<br/>' +
+//         '<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/disappear-1417754650@2x.gif" />';
+//       hipchatter.notify('CBAX Scrum',
+// =======
+      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/><br/>' + message
+      hipchatter.notify('CBAX Scrum',
+// >>>>>>> Here ya go!
           {
               message: message,
               color: colors[key],

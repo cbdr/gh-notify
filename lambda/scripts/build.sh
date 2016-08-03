@@ -21,7 +21,7 @@ DIST_FILE=${APP_PATH}/${DIST_FILE_NAME}
 
 echo "LET'S GET STARTED!"
 echo 'PRECLEAN'
-rm $DIST_FILE
+rm -f $DIST_FILE
 rm -rf $DIST_DIR
 mkdir -p $DIST_DIR
 
