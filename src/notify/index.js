@@ -47,15 +47,10 @@ export default function notifyHipchat(pullRequests) {
 
   function sendNotifcation(message, key) {
     if(groupedPRs[key].length > 0) {
-// <<<<<<< a8e928d95ca38dddf1cbe41ce25e2a984cb6653e
-//       message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/>' +
-//         '<br/>' + message + '<br/>' +
-//         '<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/disappear-1417754650@2x.gif" />';
-//       hipchatter.notify('CBAX Scrum',
-// =======
-      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/><br/>' + message
+      message = '<b>There are ' + groupedPRs[key].length + ' ' + levels[key] + ' pull requests.</b><br/>' +
+        '<br/>' + message + '<br/>' +
+        '<img src="https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/disappear-1417754650@2x.gif" />';
       hipchatter.notify('CBAX Scrum',
-// >>>>>>> Here ya go!
           {
               message: message,
               color: colors[key],
