@@ -53,6 +53,7 @@ exports.cocacola = function(event, context, cb) {
     var repos = [];
     _.forEach(pullRequests, function formatPR(pr){
       repos.push({
+        id: pr.id,
         subject: {
           title: pr.title,
           type: 'Pull Request',
