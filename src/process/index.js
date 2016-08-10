@@ -49,7 +49,6 @@ function getLevel(PR) {
 
 function prune(PR) {
   let fieldsToRemove = [
-    'id',
     'number',
     'url',
     'comments',
