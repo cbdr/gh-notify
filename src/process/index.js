@@ -5,12 +5,13 @@ import getRepositories from '../retrieve';
 
 let oneDay = 24 * 60 * 60 * 1000;
 
-export default function processPRs(repo = { repo: 'cbax-' }) {
-  return getRepositories(repo)
+export default function processPRs() {
+  return getRepositories({ repo: 'cbax-' })
     .then((repos) => _.filter(repos, (r) => r.pullRequests.length > 0 ))
     .then((repos) => _.map(repos, mapPRs))
+    .tap(console.log)
     .then((PRs) => _.flatten(PRs))
-    //.tap(console.log);
+    .tap(console.log);
 }
 
 function mapPRs(repo) {
