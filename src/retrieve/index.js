@@ -1,6 +1,6 @@
 import request from 'request-promise';
 import Promise from 'bluebird';
-import { assign, filter, includes } from 'lodash';
+import { assign, filter, includes, map } from 'lodash';
 const GITHUB_API_URL = 'https://api.github.com';
 
 export default function getRepositories({ repo }) {
@@ -11,7 +11,7 @@ export default function getRepositories({ repo }) {
   })
   .get('items')
   .then(repos => filter(repos, (r) => r.owner.login === 'cbdr'))
-  // .map(loadRepoIssues)
+  //.map(loadRepoIssues)
   .map(loadPullRequests)
   .map(r => {
     return {
@@ -27,6 +27,7 @@ function loadPullRequests(repo) {
   let { pulls_url } = repo;
   return githubRequest(pulls_url)
     .map(loadPRComments)
+    .map(loadPRIssues)
     .map(p => ({
       id: p.id,
       owner: p.user,
@@ -36,7 +37,8 @@ function loadPullRequests(repo) {
       assignees: p.assignees,
       created: p.created_at,
       updated: p.updated_at,
-      comments: p.comments
+      comments: p.comments,
+      labels: p.labels
     }))
     .then(pulls => assign({}, repo, { ['pullRequests']: pulls }))
     .catch(err => {
@@ -51,11 +53,21 @@ function loadPRComments(pr) {
     .then(comments => assign({}, pr, { comments }))
 }
 
+function loadPRIssues(pr) {
+  let { issue_url } = pr;
+  return githubRequest(issue_url)
+    .then(issues => map(issues.labels, justTheName))
+    .then(labels => assign({}, pr, { labels }))
+
+    function justTheName(issue) {
+      return issue.name;
+    }
+}
+
 function loadRepoIssues(repo) {
   let { issues_url } = repo;
   return githubRequest(issues_url)
-    .map(i => ({ id: i.id, number: i.number, title: i.title, url: i.url, assignees: i.assignees }))
-    .then(issues => assign({}, repo, { issues }))
+    .then(issues => assign({}, repo, { labels: issues.labels }))
     .catch(err => {
       console.error(err)
       throw err;
