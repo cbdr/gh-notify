@@ -5,8 +5,8 @@ import getRepositories from '../retrieve';
 
 let oneDay = 24 * 60 * 60 * 1000;
 
-export default function processPRs() {
-  return getRepositories({ repo: 'cbax-' })
+export default function processPRs(repo = { repo: 'cbax-' }) {
+  return getRepositories(repo)
     .then((repos) => _.filter(repos, (r) => r.pullRequests.length > 0 ))
     .then((repos) => _.map(repos, mapPRs))
     .then((PRs) => _.flatten(PRs))
@@ -37,11 +37,12 @@ function getLevel(PR) {
       return true;
     }
   });
+  let hasLabels = PR.labels.length > 0;
   let noComments = PR.comments.length === 0;
-  if(PR.assignees.length === 0 || PR.timeOpen > 3) {
+  if((PR.assignees.length === 0 || PR.timeOpen >= 4) && !hasLabels) {
     return 10; //red: no assignees or stale
   }
-  if(PR.timeOpen > 2 || (PR.timeOpen > 1 && noComments)) {
+  if((PR.timeOpen > 2 || (PR.timeOpen > 1 && noComments)) && !hasLabels) {
     return 5; //yellow going stale (outstanding > 2 days or no comments from assignees yet && older than 16 hours)
   }
   return 0; //green
