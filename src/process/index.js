@@ -40,7 +40,6 @@ function getWorkingDaysSince(date) {
   let currentDay = start;
 
   while(currentDay < end) {
-    console.log(currentDay, currentDay.getDay())
     currentDay = new Date(currentDay);
     if(currentDay.getDay() != 0 && currentDay.getDay() != 6) {
       days++;
